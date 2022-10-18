@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import { Button } from './Button';
+import { Button } from './../components/atoms/Button'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -8,33 +8,45 @@ export default {
   component: Button,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+    mode: {
+      options: ['primary', 'secondary'],
+      control: {
+        type: 'inline-radio',
+      },
+    },
+    size: {
+      options: ['s', 'm', 'l'],
+      control: {
+        type: 'inline-radio',
+      },
+    },
   },
-};
+}
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args) => <Button {...args} />;
+const Template = args => <Button {...args} />
 
-export const Primary = Template.bind({});
+export const Primary = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  primary: true,
-  label: 'Button',
-};
+  mode: 'primary',
+  children: 'Button',
+}
 
-export const Secondary = Template.bind({});
+export const Secondary = Template.bind({})
 Secondary.args = {
-  label: 'Button',
-};
+  mode: 'secondary',
+  children: 'Button',
+}
 
-export const Large = Template.bind({});
+export const Large = Template.bind({})
 Large.args = {
-  size: 'large',
-  label: 'Button',
-};
+  size: 'l',
+  children: 'Button',
+}
 
-export const Small = Template.bind({});
+export const Small = Template.bind({})
 Small.args = {
-  size: 'small',
-  label: 'Button',
-};
+  size: 's',
+  children: 'Button',
+}
